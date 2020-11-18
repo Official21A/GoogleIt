@@ -10,7 +10,7 @@ def user_agent():
 	print(googlesearch.get_random_user_agent())
 
 
-def safe_search(query, bound):
+def safe_search(query, bound, output):
 	# Opening a connection and getting a list of search
 	try:
 		response = list(search(query, num=10, stop=10, pause=bound, safe="on"))
@@ -18,14 +18,14 @@ def safe_search(query, bound):
 		print(f"> Error in :: {e}") # connection handeling
 		response = []
 
-	with open('python.txt', "w") as file: # save them into a file
+	with open(f'{output}.txt', "w") as file: # save them into a file
 		for result in response:
 			file.write(result + "\n")
   
 
-def normal_search(query, bound):
+def normal_search(query, bound, output):
 	# To search in an normal way
-    with open('test.txt', 'w') as file:
+    with open(f'{output}.txt', 'w') as file:
     	try:  
     		for j in search(query, tld="com", num=10, stop=10, pause=bound): 
     			file.write(j + "\n") 
@@ -52,13 +52,18 @@ def command_input(argumenst):
 	else:
 		bound = 2
 
+	if "-o" in argumenst:
+		output = argumenst[argumenst.index("-o")+1]
+	else:
+		output = query
+
 	# Safe search or not
 	safe = "-s" in argumenst
 
 	if safe:
-		safe_search(query=query, bound=bound)
+		safe_search(query=query, bound=bound, output=output)
 	else:
-		normal_search(query=query, bound=bound)		
+		normal_search(query=query, bound=bound, output=output)		
 			
 
 def execute(argumenst):
