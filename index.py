@@ -10,10 +10,10 @@ def user_agent():
 	print(googlesearch.get_random_user_agent())
 
 
-def safe_search():
+def safe_search(query, bound):
 	# Opening a connection and getting a list of search
 	try:
-		response = list(search("python", num=10, stop=10, pause=2, safe="on"))
+		response = list(search(query, num=10, stop=10, pause=bound, safe="on"))
 	except Exception as e:
 		print(f"> Error in :: {e}") # connection handeling
 		response = []
@@ -23,31 +23,53 @@ def safe_search():
 			file.write(result + "\n")
   
 
-def normal_search():
+def normal_search(query, bound):
 	# To search in an normal way
-    query = "A computer science portal"
-
     with open('test.txt', 'w') as file:
     	try:  
-    		for j in search(query, tld="com", num=10, stop=10, pause=2): 
+    		for j in search(query, tld="com", num=10, stop=10, pause=bound): 
     			file.write(j + "\n") 
     	except Exception as e:
     		print(f"> Error in :: {e}")
 
 
-def execute(safe="off"):
+def command_input(argumenst):
+	# To get the user input and check for the results
+	# No input in command
+	if len(argumenst) == 1:
+		normal_search()
+		return
+
+	# Query to search
+	if "-q" in argumenst:
+		query = argumenst[argumenst.index("-q")+1]
+	else:
+		query = "google"
+	
+	# Time to wait for any searchings
+	if "-t" in argumenst:
+		bound = int(argumenst[argumenst.index("-t")+1])
+	else:
+		bound = 2
+
+	# Safe search or not
+	safe = "-s" in argumenst
+
+	if safe:
+		safe_search(query=query, bound=bound)
+	else:
+		normal_search(query=query, bound=bound)		
+			
+
+def execute(argumenst):
 	# Program executig
 	user_agent()
-	if safe == "on":
-		safe_search()
-	else:
-		normal_search()
+	command_input(argumenst)
+
 	print("Done")
+	
 
 
 # Program starts
 if __name__ == "__main__":
-	if len(sys.argv) == 1:
-		execute()
-	else:
-		execute("on")
+	execute(sys.argv)
