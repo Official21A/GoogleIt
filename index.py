@@ -1,5 +1,6 @@
 import sys
 from headers import safe_search, normal_search, user_agent
+from utils import utils_init
 
 
 def command_input(argumenst):
@@ -37,6 +38,9 @@ def command_input(argumenst):
 
 def execute(argumenst):
 	# Program executig
+	# Files and folders check
+	utils_init()
+	# Start searching
 	user_agent()
 	command_input(argumenst)
 

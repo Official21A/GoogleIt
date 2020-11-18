@@ -2,6 +2,8 @@ import googlesearch
 from googlesearch import search
 
 
+MAIN_DIR = "./docs/"
+
 def user_agent():
 	# Information about user agent
 	print(">> User agant :")
@@ -16,14 +18,14 @@ def safe_search(query, bound, output):
 		print(f"> Error in :: {e}") # connection handeling
 		response = []
 
-	with open(f'{output}.txt', "w") as file: # save them into a file
+	with open(f'{MAIN_DIR}{output}.txt', "w") as file: # save them into a file
 		for result in response:
 			file.write(result + "\n")
   
 
 def normal_search(query, bound, output):
 	# To search in an normal way
-    with open(f'{output}.txt', 'w') as file:
+    with open(f'{MAIN_DIR}{output}.txt', 'w') as file:
     	try:  
     		for j in search(query, tld="com", num=10, stop=10, pause=bound): 
     			file.write(j + "\n") 
