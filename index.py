@@ -1,5 +1,6 @@
 import googlesearch
 from googlesearch import search
+
 import sys
 
 
@@ -22,13 +23,13 @@ def safe_search():
 			file.write(result + "\n")
   
 
-def search():
+def normal_search():
 	# To search in an normal way
     query = "A computer science portal"
 
     with open('test.txt', 'w') as file:
     	try:  
-    		for j in search(query, tld="co.in", num=10, stop=10, pause=2): 
+    		for j in search(query, tld="com", num=10, stop=10, pause=2): 
     			file.write(j + "\n") 
     	except Exception as e:
     		print(f"> Error in :: {e}")
@@ -36,10 +37,11 @@ def search():
 
 def execute(safe="off"):
 	# Program executig
+	user_agent()
 	if safe == "on":
 		safe_search()
 	else:
-		search()
+		normal_search()
 	print("Done")
 
 

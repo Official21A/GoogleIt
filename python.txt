@@ -1,0 +1,10 @@
+https://www.python.org/
+https://commons.wikimedia.org/wiki/File:Python_logo_and_wordmark.svg
+https://en.wikipedia.org/wiki/Python_(programming_language)
+https://www.w3schools.com/python/
+https://www.learnpython.org/
+https://www.tutorialspoint.com/python/index.htm
+https://github.com/python
+https://www.codecademy.com/learn/learn-python
+https://www.kaggle.com/learn/python
+https://www.udacity.com/course/introduction-to-python--ud1110
