@@ -1,0 +1,10 @@
+https://www.java.com/
+https://en.wikipedia.org/wiki/Java_(programming_language)
+https://www.oracle.com/java/technologies/
+https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+https://www.w3schools.com/java/
+https://adoptopenjdk.net/
+https://netbeans.org/
+https://www.geeksforgeeks.org/java/
+https://www.coursera.org/specializations/java-programming
+https://www.codecademy.com/learn/learn-java
