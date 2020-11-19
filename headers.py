@@ -1,5 +1,6 @@
 import googlesearch
 from googlesearch import search
+from firewall import active
 
 
 MAIN_DIR = "./docs/"
@@ -20,7 +21,8 @@ def safe_search(query, bound, output):
 
 	with open(f'{MAIN_DIR}{output}.txt', "w") as file: # save them into a file
 		for result in response:
-			file.write(result + "\n")
+			if active(result):
+				file.write(result + "\n")
   
 
 def normal_search(query, bound, output):
