@@ -6,14 +6,18 @@ def https_check(domain):
 
 
 def privacy_policy(url):
-	browser = mechanicalsoup.Browser()
+	browser = mechanicalsoup.StatefulBrowser()
 	try:
-		browser.open(url, timeout=5)
+		browser.open(url, timeout=1)
 	except:
 		print(">> privacy policy checking failed.")
 		return False
-	page_soup = browser.page.soup 
-	links = page_soup.findAll('a')
+	page = browser.get_current_page() 
+	try:
+		links = page.findAll('a')
+	except:
+		print(">> privacy policy checking failed.")
+		return False
 	inner_links = [a.text.lower() for a in links]
 	return "privacy policy" in inner_links
 
