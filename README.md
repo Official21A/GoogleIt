@@ -6,7 +6,28 @@ In this program , I tried to create an environment where you can find the weblin
 
 This program is easy to install and easy to use, and it has the ability of safe search, where our firewall will block the websites that are unsafe.
 
+# Install
+If you are using "linux" operating system, I created an installer package for this program, before you do anything, just download the "install" folder
+and then open it. Execute the installer file :
+```shell
+./installer.sh
+```
+>> or just double click on it.
+
+Installer file will check for your python and pip installation , and then it installs "venv" for you, after that it installs "unzip" if needed.
+
+After you execute the file, it will create a folder named "googleit" for you. So you can add all of the files of program into it and go for commands.
+
 # Commands
+Before you do anything, since the program tools storage was too much, I created an virtual environment for you on your system. For working with program
+you need to get into the virtual environment first by entering this command :
+```shell
+source env/bin/activate
+```
+And for getting out of virtual environment enter :
+```shell
+deactivate
+```
 Our main file is index, so you can run the program with :
 ```shell
 python3 index.py
