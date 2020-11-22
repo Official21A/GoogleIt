@@ -1,41 +1,30 @@
 #!/usr/bin/bash
 
-
-# this function installs python3
-function install_python {
-    sudo apt-get update
-    sudo apt-get install python3.6
-    python3 --version
-    echo "Python3 is now installed on your system."
-}
-
-# this function installs pip3
-function install_pip {
-    sudo apt-get update
-    sudo apt install python3-pip
-    pip3 --version
-    echo "Pip3 is now installed on your system."
-}
-
-# this function installs virtualenv
-function install_venv {
-    sudo apt-get update
-    pip3 install virtualenv
-    pip3 freeze | grep virtualenv
-    echo "Virualenv is now installed on your python3."
-}
+# Load the main functions
+source "functions.sh"
 
 
 # this function checks whats needed for shell script
 function check_requirments {
     if ! [[ "$(python3 -V)" =~ "Python 3" ]]; then
         install_python
+    else
+        echo "> Python3 status : OK"
     fi
     if ! [[ "$(pip3 --version)" =~ "pip 1" ]]; then
         install_pip
+    else
+        echo "> Pip3 status : OK"
     fi
     if ! [[ "$(python3 -h venv)" =~ "usage: python3" ]]; then
         install_venv
+    else
+        echo "> Venv status : OK"
     fi
     echo "Requirements checked."
 }
+
+
+echo "Running installer ..."
+check_requirments
+echo "Exit staus : 0"
