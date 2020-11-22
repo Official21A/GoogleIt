@@ -23,3 +23,10 @@ function install_venv {
     pip3 freeze | grep virtualenv
     echo "Virualenv is now installed on your python3."
 }
+
+# this function installs the upzip command
+function set_unzip {
+    sudo apt install unzip
+    unzip -v
+    echo "Unzip is now installed on your system."
+}

@@ -21,6 +21,11 @@ function check_requirments {
     else
         echo "> Venv status : OK"
     fi
+    if ! [[ "$(unzip -v)" =~ "UnZip" ]]; then
+        set_unzip
+    else
+        echo "> Unzip status : OK"
+    fi
     echo "Requirements checked."
 }
 
