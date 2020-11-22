@@ -3,7 +3,6 @@
 # Load the main functions
 source "functions.sh"
 
-
 # this function checks whats needed for shell script
 function check_requirments {
     if ! [[ "$(python3 -V)" =~ "Python 3" ]]; then
@@ -29,7 +28,21 @@ function check_requirments {
     echo "Requirements checked."
 }
 
+# this function sets the application requirements
+function set_base {
+    if [ -f "package.zip" ]; then
+        echo "Package finding > OK"
+        mkdir googleit
+        unzip -q package.zip -d googleit
+        echo "Installed Successfully."
+    else
+        echo "Error: Directory 'package.zip' does not exists."
+        exit -1
+    fi
+}
 
+# Script starts
 echo "Running installer ..."
 check_requirments
+set_base
 echo "Exit staus : 0"
